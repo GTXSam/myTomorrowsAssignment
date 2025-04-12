@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "mytomapp.fullname" . }}
+  labels:
+    app: {{ include "mytomapp.name" . }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ include "mytomapp.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "mytomapp.name" . }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: {{ .Values.env.MYTOMAPP_PORT }}
+          env:
+            - name: FLASK_RUN_PORT
+              value: {{ .Values.env.MYTOMAPP_PORT | quote }}
+            - name: DB_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Chart.Name }}-config
+                  key: DB_PASSWORD
+            - name: API_BASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Chart.Name }}-config
+                  key: API_BASE_URL
+            - name: LOG_LEVEL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Chart.Name }}-config
+                  key: LOG_LEVEL
+            - name: MAX_CONNECTIONS
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Chart.Name }}-config
+                  key: MAX_CONNECTIONS
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: {{ .Values.env.MYTOMAPP_PORT }}
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: {{ .Values.env.MYTOMAPP_PORT }}
+            initialDelaySeconds: 5
+            periodSeconds: 10

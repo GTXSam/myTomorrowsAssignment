@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "mytomapp.fullname" . }}
+  labels:
+    app: {{ include "mytomapp.name" . }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.env.MYTOMAPP_PORT }}
+      targetPort: {{ .Values.env.MYTOMAPP_PORT }}
+      protocol: TCP
+      name: http
+  selector:
+    app: {{ include "mytomapp.name" . }}
+
