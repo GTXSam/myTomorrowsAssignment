@@ -5,7 +5,7 @@ metadata:
   labels:
     app: {{ include "mytomapp.name" . }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.global.replicas }}
   selector:
     matchLabels:
       app: {{ include "mytomapp.name" . }}
@@ -18,14 +18,14 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           ports:
-            - containerPort: {{ .Values.env.MYTOMAPP_PORT }}
+            - containerPort: {{ .Values.global.myTomAppPort }}
           env:
             - name: FLASK_RUN_PORT
-              value: {{ .Values.env.MYTOMAPP_PORT | quote }}
+              value: {{ .Values.global.myTomAppPort | quote }}
             - name: DB_PASSWORD
               valueFrom:
-                configMapKeyRef:
-                  name: {{ .Chart.Name }}-config
+                secretKeyRef:
+                  name: {{ .Chart.Name }}-dbsecret
                   key: DB_PASSWORD
             - name: API_BASE_URL
               valueFrom:
@@ -42,15 +42,20 @@ spec:
                 configMapKeyRef:
                   name: {{ .Chart.Name }}-config
                   key: MAX_CONNECTIONS
+            - name: SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Chart.Name }}-keysecret
+                  key: SECRET_KEY
           readinessProbe:
             httpGet:
               path: /health
-              port: {{ .Values.env.MYTOMAPP_PORT }}
+              port: {{ .Values.global.myTomAppPort }}
             initialDelaySeconds: 5
             periodSeconds: 10
           livenessProbe:
             httpGet:
               path: /health
-              port: {{ .Values.env.MYTOMAPP_PORT }}
+              port: {{ .Values.global.myTomAppPort }}
             initialDelaySeconds: 5
             periodSeconds: 10

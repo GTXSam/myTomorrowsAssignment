@@ -7,8 +7,8 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.env.MYTOMAPP_PORT }}
-      targetPort: {{ .Values.env.MYTOMAPP_PORT }}
+    - port: {{ .Values.global.myTomAppPort }}
+      targetPort: {{ .Values.global.myTomAppPort }}
       protocol: TCP
       name: http
   selector:

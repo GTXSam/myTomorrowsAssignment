@@ -3,8 +3,6 @@ kind: ConfigMap
 metadata:
   name: {{ .Chart.Name }}-config
 data:
-  SECRET_KEY: {{ .Values.configMap.SECRET_KEY | quote }}
-  DB_PASSWORD: {{ .Values.configMap.DB_PASSWORD | quote }}
   API_BASE_URL: {{ .Values.configMap.API_BASE_URL | quote }}
   LOG_LEVEL: {{ .Values.configMap.LOG_LEVEL | quote }}
   MAX_CONNECTIONS: {{ .Values.configMap.MAX_CONNECTIONS | quote }}

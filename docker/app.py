@@ -34,7 +34,7 @@ def config():
 #Sam - Healthcheck & Metrics endpoints
 @app.route('/health')
 def health():
-    return jsonify({"status": "healthy"}), 200
+    return jsonify({"status": "OK"}), 200
 
 metrics = PrometheusMetrics(app)
 metrics.info("app_info", "MyTomorrows Assignment", version="1.0.0")

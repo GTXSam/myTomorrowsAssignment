@@ -1,0 +1,25 @@
+image:
+  repository: 195275637740.dkr.ecr.eu-central-1.amazonaws.com/mytomorrows
+  tag: latest
+  pullPolicy: IfNotPresent
+
+#Port Flask runs on and Container is exposed on
+global:
+  myTomAppPort: 8081
+  replicas: 3
+
+ingress:
+  enabled: false
+
+service:
+  type: ClusterIP
+
+configMap:
+  ENVIRONMENT: qa
+  API_BASE_URL: "http://localhost"
+  LOG_LEVEL: INFO
+  MAX_CONNECTIONS: 100
+
+secrets:
+  SECRET_KEY: "MyTomSecret123"
+  DB_PASSWORD: "12345$abc"
