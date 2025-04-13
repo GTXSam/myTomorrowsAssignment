@@ -9,6 +9,7 @@ resource "helm_release" "my_chart" {
   namespace = var.namespace
   force_update   = var.force_update
   atomic      = var.atomic
+  cleanup_on_fail = var.cleanup_on_fail
 
   replace        = var.replace_release
 

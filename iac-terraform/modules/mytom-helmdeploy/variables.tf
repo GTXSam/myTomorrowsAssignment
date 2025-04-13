@@ -64,3 +64,8 @@ variable "replicas" {
   type        = number
   default     = 2
 }
+
+variable "cleanup_on_fail" {
+    description = "Cleanup on failed deploy"
+    type = bool
+}

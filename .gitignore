@@ -1,3 +1,6 @@
+# Non-encrypted Helm values files
+./helm/mytomapp/*.yaml
+
 # Local .terraform directories
 **/.terraform/*
 .terraform/*
