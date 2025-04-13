@@ -1,0 +1,4 @@
+creation_rules:
+  - path_regex: '(values.*)$'
+    encrypted_regex: '^(SECRET_KEY.*|DB_PASSWORD.*)$'
+    kms: arn:aws:kms:eu-central-1:195275637740:key/53dc4f11-d3b5-45ca-ae71-2e65ef1402f7

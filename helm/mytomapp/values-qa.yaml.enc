@@ -1,0 +1,30 @@
+image:
+    repository: 195275637740.dkr.ecr.eu-central-1.amazonaws.com/mytomorrows
+    tag: latest
+    pullPolicy: IfNotPresent
+#Port Flask runs on and Container is exposed on
+global:
+    myTomAppPort: 8081
+    replicas: 3
+ingress:
+    enabled: false
+service:
+    type: ClusterIP
+configMap:
+    ENVIRONMENT: qa
+    API_BASE_URL: http://localhost
+    LOG_LEVEL: INFO
+    MAX_CONNECTIONS: 100
+secrets:
+    SECRET_KEY: ENC[AES256_GCM,data:km9cc+5HlOXFWqOc,iv:fhEcYbwr81F1X4Vaxl3UrrwqTzhaj4pdD6nwCGrG5I0=,tag:IJOB0GwOt8VMcueA1xziIQ==,type:str]
+    DB_PASSWORD: ENC[AES256_GCM,data:HuT10SoU2jRyEQ==,iv:uhvYxvV3GtNMYiOztRwwxoT/mcuaaX9T0IRWggGcd4k=,tag:qHevFxyskbQC6DEfjMTwVw==,type:str]
+sops:
+    kms:
+        - arn: arn:aws:kms:eu-central-1:195275637740:key/53dc4f11-d3b5-45ca-ae71-2e65ef1402f7
+          created_at: "2025-04-13T12:15:51Z"
+          enc: AQICAHgvy/E4ngSitrjt1/rS+0amIL+cfCVTia+t428/sp1fPgHoJ1118EuAmUfKWuEZJ4MdAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMPmbqnRc3MiQ2KOH/AgEQgDvGRPmHG3lY0M3l4ZrpJPQ4Hh+T0nVn1I6fDgmtGJ+E5FZbFvRxsyjoG1gwSva1Hk/twk2Km4hmSzpSNA==
+          aws_profile: ""
+    lastmodified: "2025-04-13T12:15:51Z"
+    mac: ENC[AES256_GCM,data:vIEqWyS1U53VnadVXRT2iqHOEXJ9+9LCVwe5cnrNMOfrAv4IO5opM63SGZNIHWVMh6fl+j8p2rcGuehM+cuWRDYQXtt/4zGuMBaTLC83j1+dpufskIpDGImO3pBCQQ8BBCsYYLFUJYIPU5fx91NxKqE0IJEIKFyU8TwKbo3P9BU=,iv:5FTfNbcGcdYY62CPb+GEAgRf0Bn/CnNgUNh5zYxzFSs=,tag:acKjtAUw0F2QoYW0xpKcCA==,type:str]
+    encrypted_regex: ^(SECRET_KEY.*|DB_PASSWORD.*)$
+    version: 3.10.1
