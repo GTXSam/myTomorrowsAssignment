@@ -1,7 +1,5 @@
 # Non-encrypted Helm values files
-./helm/mytomapp/values-prod.yaml
-./helm/mytomapp/values-qa.yaml
-./helm/mytomapp/values-test.yaml
+values-*.yaml
 
 # Local .terraform directories
 **/.terraform/*
