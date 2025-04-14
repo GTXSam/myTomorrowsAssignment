@@ -11,25 +11,29 @@ ingress:
 service:
     type: ClusterIP
 hpa:
+    enabled: false
     minReplicas: 1
-    maxReplicas: 3
+    maxReplicas: 1
     targetCPUUtilizationPercentage: 80
     targetMemoryUtilizationPercentage: 80
+pdb:
+    enabled: false
+    minAvailablePDB: 1
 configMap:
     ENVIRONMENT: test
     API_BASE_URL: http://localhost
     LOG_LEVEL: DEBUG
     MAX_CONNECTIONS: 100
 secrets:
-    SECRET_KEY: ENC[AES256_GCM,data:Zt9SzHNZOHureYHM,iv:yNeXMXt9EuuYI7rDjuRLCMRoRJmeHwGc5AvsO45YJYM=,tag:wmNd6UMKE/pLjN1HlkcaPQ==,type:str]
-    DB_PASSWORD: ENC[AES256_GCM,data:GQrELkOisCjb8w==,iv:kf0MifYO5sxRDEfdwgaXfaPxM0VIvfoKXSgRgyYVFS8=,tag:/4RqSHh9dZXK29wWf2Gl2w==,type:str]
+    SECRET_KEY: ENC[AES256_GCM,data:B69cCjsSoFmbD65i,iv:aRiemmil6sh3/HjPMUFPrLF55OmQDSgkzEDIqwUr/uA=,tag:7PAji9XTCxLctisscnCqkg==,type:str]
+    DB_PASSWORD: ENC[AES256_GCM,data:mr5jZaIHkYepHw==,iv:9AH/xwXOZMkDbEzZmKGRxk6enJ0oxkdLm3M/wJlB3IE=,tag:lU6XA2IuybHo3/Fvzu1FDw==,type:str]
 sops:
     kms:
         - arn: arn:aws:kms:eu-central-1:195275637740:key/53dc4f11-d3b5-45ca-ae71-2e65ef1402f7
-          created_at: "2025-04-14T08:06:27Z"
-          enc: AQICAHgvy/E4ngSitrjt1/rS+0amIL+cfCVTia+t428/sp1fPgFmwyafk6dz9xk1oXDo9kgqAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMZX8FqxaGpEYgYvOZAgEQgDs3icfn56i2yQetgZxWp5L5mffds1qZFI+PODZt1gBKAHkvDtkeK+4glqZubKWaxHnWuCzzjhj3sRUzUg==
+          created_at: "2025-04-14T11:49:28Z"
+          enc: AQICAHgvy/E4ngSitrjt1/rS+0amIL+cfCVTia+t428/sp1fPgGmupxXRBjue9mW47lO1RDZAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQM/Qoo68/ugyuou60HAgEQgDs8mwLOjuIjkA9O9nuDiCyouQrA7u88zpwdlbPPrwBcx0k0DqPGXvLaEg/qfpn5lXGFwTz+7QJSaRyFbQ==
           aws_profile: ""
-    lastmodified: "2025-04-14T08:06:27Z"
-    mac: ENC[AES256_GCM,data:wHns6/JWa0MhVUPG7kckhmej0YqjjVAr3OYl3tfU1qr15jKJFejGMtSyQRbrZ4xXXAe/yVRttyob0BbzPORUlSyE2VgrgDbD2wzra9OmrVbbJBILwZh+de+Hmi6FertxnO9RP+xhKpZ/fIVOIjg0DxbL+/LThuedL4JMGf0KYE0=,iv:OWDxfLTnNicA50ie36LvDqUlcYGIV+XOqGuGrSAJ5hQ=,tag:xNPpoYDGOAwqTqsHs/4D7A==,type:str]
+    lastmodified: "2025-04-14T11:49:28Z"
+    mac: ENC[AES256_GCM,data:gnYJD5NUz9jDjp0r/IeguJPx7A/XNGlKKexdsO9yijqxkzLr35BBJcYOwKDFevsYc1C0hL//q13K7Nk/VBv1EOql/Bw1iAVNf76HZECDcwKRAFsPe3oX2xOnXVy3jIrkpYooV6LgdwvhtRJRpnkzEtKRTMAOGbLzsnfijRSJt1Q=,iv:aaAZMhZMUmHRuxHDv4m+/lQkg8BIRck/dlM/F8ZbXPU=,tag:cGF3GTjBrOUQDKm0ItLlRQ==,type:str]
     encrypted_regex: ^(SECRET_KEY.*|DB_PASSWORD.*)$
     version: 3.10.1
