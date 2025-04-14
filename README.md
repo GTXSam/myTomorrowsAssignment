@@ -97,7 +97,7 @@ The values were seperated per env. agnostically so they can be set/finetuned acc
 
 
 
-#### 4. Terraform  - [Click Here](http://https://github.com/GTXSam/myTomorrowsAssignment/tree/main/iac-terraform)
+#### 4. Terraform  - [Click Here](https://github.com/GTXSam/myTomorrowsAssignment/tree/main/iac-terraform)
 
 A [custom module](https://github.com/GTXSam/myTomorrowsAssignment/tree/main/iac-terraform/modules/mytom-helmdeploy) was written for this Assignment with the purpose of demonstrating the re-usability of Helm's provider with `helm_release`.
 
@@ -203,7 +203,7 @@ Usually ServiceMonitorSelector in the Prometheus CR is modified to add the Servi
 
 For provability's sake for this assessment, the MyTomorrow's Flask metrics ServiceMonitor has been appended with the Prometheus Operator Stack predefined label.
 
-### 2. Grafana Dashboard - [Click Here](http://)
+### 2. Grafana Dashboard - [Click Here](https://github.com/GTXSam/myTomorrowsAssignment/blob/main/prometheus)
 ![Grafana Dash](image-2.png)
 An open-source Grafana dashboard was used and adapted for this Assignment. The dashboard includes variable labels filtered by namespace and/or pod. The metrics exposed are:
 - Requests per second
