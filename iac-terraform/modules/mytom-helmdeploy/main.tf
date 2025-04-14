@@ -17,4 +17,16 @@ resource "helm_release" "my_chart" {
     name  = "global.replicas"
     value = var.replicas
   }
+
+  set {
+    name  = "hpa.minReplicas"
+    value = var.hpa_minReplicas
+  }  
+
+  set {
+    name  = "hpa.maxReplicas"
+    value = var.hpa_maxReplicas
+  }  
+
+
 }

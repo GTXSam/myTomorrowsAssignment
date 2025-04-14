@@ -69,3 +69,15 @@ variable "cleanup_on_fail" {
     description = "Cleanup on failed deploy"
     type = bool
 }
+
+variable "hpa_minReplicas" {
+    description = "HPA Min Replicas"
+    type = string
+    default = null
+}
+
+variable "hpa_maxReplicas" {
+    description = "HPA Max Replicas"
+    type = string
+    default = null
+}
