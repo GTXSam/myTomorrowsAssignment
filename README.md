@@ -49,21 +49,21 @@ In-depth description of design choice in sections below.
 ---
 ![Health check](image.png)
 
-#### 1. Python Flask App
+#### 1. Python Flask App - [Click Here](https://github.com/GTXSam/myTomorrowsAssignment/blob/main/docker/app.py)
 
 The Assignment flask app was modified to include:
  1.  A `/health` endpoint which returns Status healthy when returning HTTP Code 200. Useful for application health-check and metrics.
- 2. A `/metrics` endpoint through the `prometheus_flask_exporter` library which exports relevant Flask app. metrics relevant to our observability needs. These metrics are then scraped by Prometheus using a ServiceMonitor. Check the [Observability](#Observability) section below for more info. 
+ 2. A `/metrics` endpoint through the `prometheus_flask_exporter` library which exports relevant Flask app. metrics relevant to our observability needs. These metrics are then scraped by Prometheus using a ServiceMonitor. Check the [Observability](#observability) section below for more info. 
 
 
-#### 2. Dockerfile - [Click Here](http://)
+#### 2. Dockerfile - [Click Here](http://https://github.com/GTXSam/myTomorrowsAssignment/blob/main/docker/mytom.Dockerfile)
 
 1. A slim version of python was opted for as the base image, to reduce size.
 2. Pip was used to install dep. Flask, jsonify & prometheus-flask-exporter.
 3. Flask Port App Env Var set to default 5000, but is overwritten by the env. variable set in entrypoint.sh (Configurable in the Helm chart).
 4. Entrypoint was used to execute flask app. This allows adding additional params.
 
-#### 3. Helm Chart - [Click Here](http://)
+#### 3. Helm Chart - [Click Here](https://github.com/GTXSam/myTomorrowsAssignment/tree/main/helm/mytomapp)
 
 The Helm chart was written with practical functionality in mind.
 
@@ -97,9 +97,9 @@ The values were seperated per env. agnostically so they can be set/finetuned acc
 
 
 
-#### 4. Terraform  - [Click Here](http://)
+#### 4. Terraform  - [Click Here](http://https://github.com/GTXSam/myTomorrowsAssignment/tree/main/iac-terraform)
 
-A custom module was written for this Assignment with the purpose of demonstrating the re-usability of Helm's provider with `helm_release`.
+A [custom module](https://github.com/GTXSam/myTomorrowsAssignment/tree/main/iac-terraform/modules/mytom-helmdeploy) was written for this Assignment with the purpose of demonstrating the re-usability of Helm's provider with `helm_release`.
 
 Apart from the standard params. exposed by this resource, the injection of specific values was introduced to manipulate infrastructure-scoped configuration exposed in the Helm values files. This being said, a concious desicion was made to leave application scoped-configuration confined to Helm values files. 
 
