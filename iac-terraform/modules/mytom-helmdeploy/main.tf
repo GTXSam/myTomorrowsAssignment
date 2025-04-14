@@ -19,14 +19,44 @@ resource "helm_release" "my_chart" {
   }
 
   set {
-    name  = "hpa.minReplicas"
-    value = var.hpa_minReplicas
-  }  
+    name  = "hpa.enabled"
+    value = var.hpa_enabled
+  }
 
   set {
-    name  = "hpa.maxReplicas"
-    value = var.hpa_maxReplicas
-  }  
+    name  = "pdb.enabled"
+    value = var.pdb_enabled
+  }    
+
+  dynamic "set" {
+    for_each = var.hpa_enabled ? [
+      {
+        name  = "hpa.minReplicas"
+        value = var.hpa_minReplicas
+      },
+      {
+        name  = "hpa.maxReplicas"
+        value = var.hpa_maxReplicas
+      }
+    ] : []
+    content {
+      name  = set.value["name"]
+      value = set.value["value"]
+    }
+  }
+
+  dynamic "set" {
+    for_each = var.pdb_enabled ? [
+      {
+        name  = "pdb.minAvailablePDB"
+        value = var.pdb_minAvailablePDB
+      }
+    ] : []
+    content {
+      name  = set.value["name"]
+      value = set.value["value"]
+    }
+  }
 
 
 }

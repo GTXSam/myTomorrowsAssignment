@@ -1,0 +1,14 @@
+{{- if .Values.pdb.enabled -}}
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: {{ include "mytomapp.fullname" . }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ include "mytomapp.name" . }}
+spec:
+  minAvailable: {{ .Values.pdb.minAvailablePDB }}
+  selector:
+    matchLabels:
+      app: {{ include "mytomapp.name" . }}
+{{- end -}}

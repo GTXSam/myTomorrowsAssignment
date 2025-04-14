@@ -62,12 +62,18 @@ variable "atomic"{
 variable "replicas" {
   description = "Number of replicas for MyTomApp"
   type        = number
-  default     = 2
+  default     = 1
 }
 
 variable "cleanup_on_fail" {
     description = "Cleanup on failed deploy"
     type = bool
+}
+
+variable "hpa_enabled" {
+    description = "HPA Enabled?"
+    type = bool
+    default = null
 }
 
 variable "hpa_minReplicas" {
@@ -81,3 +87,17 @@ variable "hpa_maxReplicas" {
     type = string
     default = null
 }
+
+variable "pdb_enabled" {
+    description = "PDB Enabled?"
+    type = bool
+    default = null
+}
+
+variable "pdb_minAvailablePDB" {
+    description = "min Available PDB"
+    type = string
+    default = null
+}
+
+
