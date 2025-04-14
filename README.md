@@ -3,7 +3,7 @@
 myTomorrows Assignment - Sam Zammit 14/04/25
 
 **Assignment Contents**
-- [Assignment Spec](#assignment-spec)
+  - [Assignment Spec](#assignment-spec)
   - [Acceptance Criteria / Overview of Design Decisions](#acceptance-criteria--overview-of-design-decisions)
   - [Environment](#environment)
   - [Code Structure](#code-structure)
@@ -23,8 +23,8 @@ myTomorrows Assignment - Sam Zammit 14/04/25
   - [Production and Onwards](#production-and-onwards)
     - [AWS Resource Access Control](#1-aws-resource-access-control)
     - [Automating Deployment to Different Envs using CI/CD](#2-automating-deployment-to-different-envs-using-cicd)
-- [Improvement Points](#improvement-points)
-- [Trade-offs](#trade-offs)
+  - [Improvement Points](#improvement-points)
+  - [Trade-offs](#trade-offs)
 
 ## Assignment Spec
 
