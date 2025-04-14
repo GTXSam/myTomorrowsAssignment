@@ -56,7 +56,7 @@ The Assignment flask app was modified to include:
  2. A `/metrics` endpoint through the `prometheus_flask_exporter` library which exports relevant Flask app. metrics relevant to our observability needs. These metrics are then scraped by Prometheus using a ServiceMonitor. Check the [Observability](#observability) section below for more info. 
 
 
-#### 2. Dockerfile - [Click Here](http://https://github.com/GTXSam/myTomorrowsAssignment/blob/main/docker/mytom.Dockerfile)
+#### 2. Dockerfile - [Click Here](https://github.com/GTXSam/myTomorrowsAssignment/blob/main/docker/mytom.Dockerfile)
 
 1. A slim version of python was opted for as the base image, to reduce size.
 2. Pip was used to install dep. Flask, jsonify & prometheus-flask-exporter.
