@@ -1,5 +1,6 @@
 from flask import Flask, jsonify
 import os
+from prometheus_flask_exporter import PrometheusMetrics
 
 app = Flask(__name__)
 
@@ -30,5 +31,17 @@ def config():
         "MAX_CONNECTIONS": max_connections
     })
 
+#Sam - Healthcheck & Metrics endpoints
+@app.route('/health')
+def health():
+    return jsonify({"status": "OK"}), 200
+
+metrics = PrometheusMetrics(app)
+metrics.info("app_info", "MyTomorrows Assignment", version="1.0.0")
+
+
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    #Sam - Added option to var. port
+    port = int(os.getenv('FLASK_RUN_PORT', 5000))
+    app.run(host="0.0.0.0", port=port)
+

@@ -8,9 +8,9 @@ myTomorrows Assignment - Sam Zammit 14/04/25
   - [Environment](#environment)
   - [Code Structure](#code-structure)
     - [Python Flask App](#1-python-flask-app)
-    - [Dockerfile](#2-dockerfile)
-    - [Helm Chart](#3-helm-chart)
-    - [Terraform](#4-terraform)
+    - [Dockerfile](#2-dockerfile---click-here)
+    - [Helm Chart](#3-helm-chart---click-here)
+    - [Terraform](#4-terraform---click-here)
   - [Deploying](#deploying)
   - [Networking](#networking)
   - [Security, Scalability, and Availability considerations](#security-scalability-and-availability-considerations)
@@ -19,7 +19,7 @@ myTomorrows Assignment - Sam Zammit 14/04/25
     - [Availability/ Fault-Tolerance](#3-availability-fault-tolerance)
   - [Observability](#observability)
     - [Flask Metrics with Prometheus](#1-flask-metrics-with-prometheus)
-    - [Grafana Dashboard](#2-grafana-dashboard)
+    - [Grafana Dashboard](#2-grafana-dashboard---click-here)
   - [Production and Onwards](#production-and-onwards)
     - [AWS Resource Access Control](#1-aws-resource-access-control)
     - [Automating Deployment to Different Envs using CI/CD](#2-automating-deployment-to-different-envs-using-cicd)
@@ -48,7 +48,6 @@ In-depth description of design choice in sections below.
 ### Code Structure
 ---
 ![Health check](image.png)
-![alt text](image-1.png)
 
 #### 1. Python Flask App
 
@@ -198,11 +197,14 @@ A few considerations to keep in mind:
 
 ## Observability
 ### 1. Flask Metrics with Prometheus
+![Flask Metrics](image-1.png)
+
 Usually ServiceMonitorSelector in the Prometheus CR is modified to add the ServiceMonitor label to discover in Prometheus.
 
 For provability's sake for this assessment, the MyTomorrow's Flask metrics ServiceMonitor has been appended with the Prometheus Operator Stack predefined label.
 
 ### 2. Grafana Dashboard - [Click Here](http://)
+![Grafana Dash](image-2.png)
 An open-source Grafana dashboard was used and adapted for this Assignment. The dashboard includes variable labels filtered by namespace and/or pod. The metrics exposed are:
 - Requests per second
 - Average response time (30s)
