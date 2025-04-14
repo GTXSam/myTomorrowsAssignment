@@ -10,21 +10,26 @@ ingress:
     enabled: false
 service:
     type: ClusterIP
+hpa:
+    minReplicas: 1
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 80
+    targetMemoryUtilizationPercentage: 80
 configMap:
     ENVIRONMENT: prod
     API_BASE_URL: http://localhost
     LOG_LEVEL: INFO
     MAX_CONNECTIONS: 100
 secrets:
-    SECRET_KEY: ENC[AES256_GCM,data:+pPEfjnsCi8Q/tSt,iv:qFjufRRuew1t51qkckTBE6gE+FloKEQnEu+y7Pxc2Q4=,tag:pmEb9gisRMYjHojbWIAMbw==,type:str]
-    DB_PASSWORD: ENC[AES256_GCM,data:kaup6c3xjXro8A==,iv:+go7JfRkLF4gALO6500alLY4uisnvds+PMut/bTUtX4=,tag:ghnzz5jTwVVF1z/bkgEQNA==,type:str]
+    SECRET_KEY: ENC[AES256_GCM,data:UO9E2gpf8XicqoS1,iv:wcEAg7mgTFKqD+9wW/O/mGb0bKcptCNZ7WFbvcD9UuU=,tag:Al5zjEx/aidHSe19YXA/sw==,type:str]
+    DB_PASSWORD: ENC[AES256_GCM,data:CKYrcUAQXZT1zw==,iv:hRFAdx0GQbG2H4KD/+K4/gitk9jAJum0Bdlub+mlsxU=,tag:ge0aQb6xGWmn8HHoyF3IvQ==,type:str]
 sops:
     kms:
         - arn: arn:aws:kms:eu-central-1:195275637740:key/53dc4f11-d3b5-45ca-ae71-2e65ef1402f7
-          created_at: "2025-04-13T12:15:42Z"
-          enc: AQICAHgvy/E4ngSitrjt1/rS+0amIL+cfCVTia+t428/sp1fPgGMddUWVlX4Vd38DU+aU/sWAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQM0U3pe/6hCbBTVmNZAgEQgDslCeF6ot4QBq4b+Q7ZjOghg5eRlngdmMypKqavmQJ+1VHcNtSVCSNnP8O+fqv5YS73MtohIoY5CQor5A==
+          created_at: "2025-04-14T08:06:09Z"
+          enc: AQICAHgvy/E4ngSitrjt1/rS+0amIL+cfCVTia+t428/sp1fPgGC8o+0Hqj3qUIMdIrOr80IAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQM8b5SQDVk/bMsMc8FAgEQgDu79x3xGbwZgRQVmJbR70iViuKY4ju8yqYBujjab/R6bvVlD5sG5ztGsmQrquF+EC8LBNJuLHg+F/GnKg==
           aws_profile: ""
-    lastmodified: "2025-04-13T12:15:42Z"
-    mac: ENC[AES256_GCM,data:4rbsnIft0duiy3nmf0koT7MZnkkjIzrIce70X4mYp/xB+zuK4iUkzHbNdV0SIF6oW3vrTMG/WPYmz89/INQVDePJM51FRfH7qJme6HUM5MsKBu9pZtVNuGwmGxEHvw/uMp9lJLYuzR86ZEBZ2x1z6Mv9VJnoqTdZGKVBgwhk3Qc=,iv:KzKhiQwgcE65kOba8qmlXukKj8VJt4Q3f3FPWgiVo2o=,tag:PIiYEjZe4OBl4CeYH1Sxig==,type:str]
+    lastmodified: "2025-04-14T08:06:09Z"
+    mac: ENC[AES256_GCM,data:rJb9p1zfOUVSDsH+q4bu2rO9k5p2y20qQd7lYjgJaR8ePGLvcav/xbHUkgKE8neMeaHfEKutksIauzJ3vKwDTkOpcK6iWP+BovDtYL74AgHdkQq7ZXwZsJR4xOuhS3GIbRSAy4swenwoq5ZMP7JzdqzIU+VPMEKUtu/okTZnf6k=,iv:bDIroie4AiFFLk6eKD8xghT9RG1NIDiLip4W3+y7kyc=,tag:cLssdCUbd1OBBJ/r5UACsA==,type:str]
     encrypted_regex: ^(SECRET_KEY.*|DB_PASSWORD.*)$
     version: 3.10.1
