@@ -1,5 +1,30 @@
 # myTomorrows Assignment - Sam Zammit 14/04/25
 
+myTomorrows Assignment - Sam Zammit 14/04/25
+
+**Assignment Contents**
+- [Assignment Spec](#assignment-spec)
+  - [Acceptance Criteria / Overview of Design Decisions](#acceptance-criteria--overview-of-design-decisions)
+  - [Environment](#environment)
+  - [Code Structure](#code-structure)
+    - [Python Flask App](#1-python-flask-app)
+    - [Dockerfile](#2-dockerfile)
+    - [Helm Chart](#3-helm-chart)
+    - [Terraform](#4-terraform)
+  - [Deploying](#deploying)
+  - [Networking](#networking)
+  - [Security, Scalability, and Availability considerations](#security-scalability-and-availability-considerations)
+    - [Security](#1-security)
+    - [Scalability](#2-scalability)
+    - [Availability/ Fault-Tolerance](#3-availability-fault-tolerance)
+  - [Observability](#observability)
+    - [Flask Metrics with Prometheus](#1-flask-metrics-with-prometheus)
+    - [Grafana Dashboard](#2-grafana-dashboard)
+  - [Production and Onwards](#production-and-onwards)
+    - [AWS Resource Access Control](#1-aws-resource-access-control)
+    - [Automating Deployment to Different Envs using CI/CD](#2-automating-deployment-to-different-envs-using-cicd)
+- [Improvement Points](#improvement-points)
+- [Trade-offs](#trade-offs)
 
 ## Assignment Spec
 
